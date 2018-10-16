@@ -1,0 +1,7 @@
+{
+  "name": "preschoollearning",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
