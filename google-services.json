@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "482802537972",
+    "firebase_url": "https://immunivac.firebaseio.com",
+    "project_id": "immunivac",
+    "storage_bucket": "immunivac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482802537972:android:fa7d2805f9453140",
+        "android_client_info": {
+          "package_name": "com.immunivac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482802537972-7nlmibt234780o8n29ie53380j76pvdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEe9QdmDkLvJVNxhlJBnDIqdRPms6fJss"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

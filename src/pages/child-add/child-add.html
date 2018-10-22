@@ -1,0 +1,37 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Add Child</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="loginForm" (submit)="addItem()" novalidate>
+
+        <ion-item>
+            <ion-label stacked>Full Name</ion-label>
+            <ion-input #name formControlName="name" type="text" placeholder="Full Name"
+                [class.invalid]="!loginForm.controls.name.valid &&
+                loginForm.controls.name.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!loginForm.controls.name.valid  &&
+                  loginForm.controls.name.dirty">
+                  <p>Please enter a valid Full Name.</p>
+        </ion-item> 
+        <ion-item>
+            <ion-label stacked>Date of Birth</ion-label>
+            <ion-datetime #dob formControlName="dob" displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" ></ion-datetime>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!loginForm.controls.dob.valid  &&
+                  loginForm.controls.dob.dirty">
+                  <p>Please enter a valid Full Name.</p>
+        </ion-item>
+
+        <button ion-button block type="submit">
+            Save
+        </button>
+
+    </form>
+</ion-content>

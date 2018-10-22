@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-title>Member List: {{user?.name}}</ion-title>         
+        <ion-buttons end>
+            <button ion-button (click)="add_children()">
+                    <ion-icon name="add" style="color:white;text-align: right"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row> 
+            <ion-col col-5>Name</ion-col>
+            <ion-col col-6>E-Mail</ion-col> 
+        </ion-row>
+        <ion-row *ngFor="let item of children" (click)="view_parent(item)"> 
+            <ion-col col-5>{{item.name }}</ion-col>
+            <ion-col col-6>{{item.username}}</ion-col> 
+            <ion-col col-1><ion-icon name="trash" style="color:green;text-align: right"  (click)="delete_parent(item)"></ion-icon></ion-col>             
+        </ion-row>
+    </ion-grid> 
+
+</ion-content>
+<hr/>
+
+<ion-content padding>
+    <ion-card *ngFor="let item of childrens">
+        <ion-item>
+            <h2>Name:{{item.name}}</h2>
+            <p>DOB: {{item.dob}}</p>
+            <p>Height: {{item.height}}</p>
+            <p>Weight: {{item.weight}}</p>
+            <button ion-button item-end clear small>
+                <ion-icon name="create"></ion-icon>
+            </button>
+
+        </ion-item>
+        <hr/>
+        <ion-card-content>
+            <button ion-button item-end small (click)="scheduleImmunization(item)">
+                   <ion-icon name="add" style="color:white;text-align: right"></ion-icon>
+                Schedule Immunization
+        </button>
+        <ion-list>
+            <ion-item *ngFor="let im of item.immunization">
+                <h2>Description: {{im.name}}</h2>
+                <h3>Scheduled Date: {{im.scheduled_date}}</h3>
+                <p> 
+                    <button ion-button item-end small clear (click)="send_reminder(im)">
+                            Reminder
+                </button>
+            </p>
+        </ion-item>
+    </ion-list>
+</ion-card-content>
+
+
+
+</ion-card>
+</ion-content>
