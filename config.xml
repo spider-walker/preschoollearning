@@ -84,4 +84,5 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="onesignal-cordova-plugin" spec="^2.4.4" />
     <engine name="android" spec="7.1.1" />
+    <plugin name="cordova-plugin-tts" spec="0.2.3" />
 </widget>

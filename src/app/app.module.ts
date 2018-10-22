@@ -14,7 +14,7 @@ import {UsersProvider} from '../providers/users/users';
 import {CustomFormsModule} from 'ng2-validation'
 import {ReactiveFormsModule} from '@angular/forms';
 import {ChildrenProvider} from '../providers/children/children';
-import { ImmunizationProvider } from '../providers/immunization/immunization';
+import {ImmunizationProvider} from '../providers/immunization/immunization';
 
 @NgModule({
     declarations: [
@@ -24,13 +24,12 @@ import { ImmunizationProvider } from '../providers/immunization/immunization';
         BrowserModule,
         IonicModule.forRoot(MyApp),
         AngularFireModule.initializeApp({
-            apiKey: "AIzaSyB8qtu1uamihBU91fK6eZb73I-nvViOcOY",
-            authDomain: "immunivac.firebaseapp.com",
-            databaseURL: "https://immunivac.firebaseio.com",
-            projectId: "immunivac",
-            storageBucket: "immunivac.appspot.com",
-            messagingSenderId: "482802537972"
-
+            apiKey: "AIzaSyCADqKxrxAhk_OSHNFEKYx6NxJdvoW56_o",
+            authDomain: "preschoollearning-edef3.firebaseapp.com",
+            databaseURL: "https://preschoollearning-edef3.firebaseio.com",
+            projectId: "preschoollearning-edef3",
+            storageBucket: "preschoollearning-edef3.appspot.com",
+            messagingSenderId: "354733940738"
         }),
         ReactiveFormsModule,
         CustomFormsModule,
@@ -53,7 +52,7 @@ import { ImmunizationProvider } from '../providers/immunization/immunization';
         HttpClient,
         UsersProvider,
         ChildrenProvider,
-    ImmunizationProvider
+        ImmunizationProvider
     ]
 })
 export class AppModule {}

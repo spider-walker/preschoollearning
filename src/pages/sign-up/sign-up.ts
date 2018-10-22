@@ -1,15 +1,10 @@
 import {Component} from '@angular/core';
-import {
-    IonicPage,
-    NavController,
-    LoadingController,
-    Loading,
-    AlertController
-} from 'ionic-angular';
+import {IonicPage, NavController, LoadingController, Loading, AlertController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthProvider} from '../../providers/auth/auth';
-import {HomePage} from '../home/home';
 import {EmailValidator} from '../../validators/email';
+import {DbUser} from '../../models/DbUser';
+import {UsersProvider} from '../../providers/users/users';
 
 @IonicPage()
 @Component({
@@ -20,11 +15,14 @@ export class SignupPage {
     public signupForm: FormGroup;
     public loading: Loading;
 
-    constructor(public nav: NavController, public authData: AuthProvider,
+    constructor(public nav: NavController,
+        public authData: AuthProvider,
         public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
+        public firebaseProvider: UsersProvider,
         public alertCtrl: AlertController) {
 
         this.signupForm = formBuilder.group({
+            name: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
             email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
             password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
         });
@@ -37,7 +35,19 @@ export class SignupPage {
         } else {
             this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
                 .then(() => {
-                    this.nav.setRoot(HomePage);
+                    let dbUser: DbUser = {
+                        parent_id: new Date().getTime(),
+                        name: this.signupForm.value.name,
+                        username: this.signupForm.value.email,
+                        password: '123456',
+                        is_admin: 1
+                    };
+                    try {
+                        this.firebaseProvider.addDbUser(dbUser);
+                    } catch (e) {
+                        console.log(e);
+                    }
+                    this.nav.setRoot('HomePage');
                 }, (error) => {
                     this.loading.dismiss().then(() => {
                         var errorMessage: string = error.message;
@@ -60,4 +70,5 @@ export class SignupPage {
             this.loading.present();
         }
     }
+
 }
