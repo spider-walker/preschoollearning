@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {Platform} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AngularFireAuth} from '@angular/fire/auth';
@@ -10,7 +10,9 @@ import {PleaseWaitPage} from '../pages/please-wait/please-wait';
 })
 export class MyApp {
     rootPage: any = PleaseWaitPage;
-
+    @ViewChild(Nav) nav: Nav;
+    pages: Array<{title: string, component: any}>;
+    
     constructor(
         platform: Platform,
         afAuth: AngularFireAuth,
@@ -22,7 +24,7 @@ export class MyApp {
             splashScreen.hide();
             const authObserver = afAuth.authState.subscribe(user => {
                 if (user) {
-                    //this.rootPage = 'HomePage';
+                    this.rootPage = 'HomePage';
                     authObserver.unsubscribe();
                 } else {
                     this.rootPage = 'LoginPage';
@@ -30,6 +32,15 @@ export class MyApp {
                 }
 
             });
+            this.pages = [
+                {title: 'Home', component: 'HomePage'},
+                {title: 'Category', component: 'CategoryPage'},
+                {title: 'Admin', component: 'AdminPage'},
+                {title: 'Settings', component: 'SettingsPage'}
+            ];
         });
+    }
+    openPage(page) {
+        this.nav.setRoot(page.component);
     }
 }

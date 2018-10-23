@@ -12,7 +12,7 @@ page-category {
     #dashborad_menu ion-col{
         display: block;
         float: left;
-        /*margin : 5px;*/
+        border:5px #fff solid;
         width: auto;
         height: 110px;
         text-align: center;
@@ -71,7 +71,7 @@ page-category {
     }
 
     .very-small-text{
-        font-size: 1.5em;
+        font-size: 1.0em;
         white-space: nowrap;
         color: #fff; 
     }

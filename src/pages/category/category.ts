@@ -33,5 +33,7 @@ export class CategoryPage {
     goToOtherPage(item) {
         this.navCtrl.setRoot(item.page);
     }
-
+    go_home() {
+        this.navCtrl.setRoot('HomePage');
+    }
 }

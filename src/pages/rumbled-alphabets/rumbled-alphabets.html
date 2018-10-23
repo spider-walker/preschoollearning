@@ -1,19 +1,23 @@
 <ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
 
-    <ion-navbar>
-        <ion-title>Rumbled Alphabets</ion-title>
+        <ion-title>Rumbled Alphabets</ion-title> 
+        <ion-buttons end>
+            <button ion-button (click)="go_home()">
+                    <ion-icon name="arrow-round-back" style="color:white;text-align: right"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
-
+    
 </ion-header>
 <ion-content>
-    <h2 ion-text  text-center>Pre-School App</h2>
-    <p ion-text  text-center>
-        <i ion-text color="primary">with</i> <br/>
-        <a ion-text color="secondary">Parental Control</a>
-    </p> 
     <hr/>
     <ion-card>
-        <ion-grid>
+        <ion-grid >
+            
             <ion-row id="dashborad_menu">
                 <ion-col *ngFor="let item of rumblesA">
                     {{item}}
@@ -25,7 +29,7 @@
 <ion-card>
     <ion-grid>
         <ion-row id="dashborad_menu">
-            <ion-col *ngFor="let item of rumblesB"  style="font-size:1.2em">
+            <ion-col *ngFor="let item of rumblesB"  style="font-size:1.2em" >
                 {{item}}
         </ion-col>
     </ion-row>

@@ -1,9 +1,16 @@
 <ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
 
-    <ion-navbar>
-        <ion-title>Welcome</ion-title>
+        <ion-title>Category</ion-title> 
+        <ion-buttons end>
+            <button ion-button (click)="go_home()">
+                    <ion-icon name="arrow-round-back" style="color:white;text-align: right"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
-
 </ion-header>
 <ion-content>
     <h2 ion-text  text-center>Pre-School App</h2>
