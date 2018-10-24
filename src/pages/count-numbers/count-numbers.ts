@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular'; 
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 @IonicPage()
 @Component({
-  selector: 'page-count-numbers',
-  templateUrl: 'count-numbers.html',
+    selector: 'page-count-numbers',
+    templateUrl: 'count-numbers.html',
 })
 export class CountNumbersPage {
 
@@ -23,9 +23,9 @@ export class CountNumbersPage {
             hidden.push(h);
         }
         for (let p = 0; p < this.rumblesA.length; p++) {
-            if (hidden.find(x => x === p)) {               
-            }else{
-                 this.rumblesA[p] = "__";
+            if (hidden.find(x => x === p)) {
+            } else {
+                this.rumblesA[p] = "__";
             }
 
         }
@@ -46,6 +46,22 @@ export class CountNumbersPage {
     }
     go_home() {
         this.navCtrl.setRoot('CategoryPage');
+    }
+    
+    public allowDrop(ev: any) {
+         console.log(ev);
+        ev.preventDefault();
+    }
+
+    public ondragstart_item(ev: any, data, idx: any) {
+        console.log(this.rumblesB[idx]);
+        ev.dataTransfer.setData('data', data);
+    }
+
+    public drop_item(ev,data) {
+        let dataTransfer = ev.dataTransfer.getData('data');
+        console.log(dataTransfer);
+        ev.preventDefault();
     }
 
 }

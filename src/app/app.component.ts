@@ -11,8 +11,7 @@ import {PleaseWaitPage} from '../pages/please-wait/please-wait';
 export class MyApp {
     rootPage: any = PleaseWaitPage;
     @ViewChild(Nav) nav: Nav;
-    pages: Array<{title: string, component: any}>;
-    
+    pages: Array<{title: string, component: any}>;    
     constructor(
         platform: Platform,
         afAuth: AngularFireAuth,
@@ -24,7 +23,7 @@ export class MyApp {
             splashScreen.hide();
             const authObserver = afAuth.authState.subscribe(user => {
                 if (user) {
-                    this.rootPage = 'HomePage';
+                    //this.rootPage = 'HomePage';
                     authObserver.unsubscribe();
                 } else {
                     this.rootPage = 'LoginPage';

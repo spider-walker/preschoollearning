@@ -17,7 +17,7 @@
     <ion-card>
         <ion-grid >
 
-            <ion-row id="dashborad_menu">
+            <ion-row id="dashborad_menu"  (drop)="drop_item($event,dropData)" (dragover)="allowDrop($event)">
                 <ion-col *ngFor="let item of rumblesA">
                     {{item}}
             </ion-col>
@@ -27,8 +27,8 @@
 <hr/> <hr/>
 <ion-card>
     <ion-grid>
-        <ion-row id="dashborad_menu">
-            <ion-col *ngFor="let item of rumblesB"  style="font-size:1.2em" >
+         <ion-row id="dashborad_menu">
+            <ion-col *ngFor="let item of rumblesB;let i = index "   draggable="true" (dragstart)="ondragstart_item($event,dropData,i)">
                 {{item}}
         </ion-col>
     </ion-row>
