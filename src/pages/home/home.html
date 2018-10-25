@@ -27,7 +27,7 @@
                     Category
                 </span>
             </ion-col>
-            <ion-col col-6>
+            <ion-col col-6 [hidden]="!is_admin">
                 <span class="circle-frame">
                     <a  class="ajax-link"  (click)="goToOtherPage('AdminPage')">
                         <ion-icon name="people"></ion-icon>

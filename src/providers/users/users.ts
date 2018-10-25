@@ -25,6 +25,11 @@ export class UsersProvider {
         this.dbusers = this.dbusersCollection.valueChanges();
         return this.dbusers;
     }
+    getDbUserByUserName(username: string) {
+        this.dbusersCollection = this.afs.collection<DbUser>('dbusers', ref => ref.where('username', '==', username));
+        this.dbusers = this.dbusersCollection.valueChanges();
+        return this.dbusers;
+    }
     get_children(parent_id: number) {
         this.dbusersCollection = this.afs.collection<DbUser>('dbchildren', ref => ref.where('parent_id', '==', parent_id));
         this.dbusers = this.dbusersCollection.valueChanges();

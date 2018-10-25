@@ -33,8 +33,10 @@ export class SignupPage {
         if (!this.signupForm.valid) {
             console.log(this.signupForm.value);
         } else {
+            let my_this = this;
             this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
                 .then(() => {
+
                     let dbUser: DbUser = {
                         parent_id: new Date().getTime(),
                         name: this.signupForm.value.name,
@@ -42,11 +44,14 @@ export class SignupPage {
                         password: '123456',
                         is_admin: 1
                     };
-                    try {
-                        this.firebaseProvider.addDbUser(dbUser);
-                    } catch (e) {
-                        console.log(e);
-                    }
+                    let s = this.firebaseProvider.getDbUsers().subscribe(snapshots => {
+                        if (snapshots.length > 0) {
+                            dbUser.is_admin = 0;
+                        }                         
+                        my_this.firebaseProvider.addDbUser(dbUser);
+                        s.unsubscribe();
+                    });
+
                     this.nav.setRoot('HomePage');
                 }, (error) => {
                     this.loading.dismiss().then(() => {

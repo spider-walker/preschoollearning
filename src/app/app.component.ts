@@ -11,10 +11,10 @@ import {PleaseWaitPage} from '../pages/please-wait/please-wait';
 export class MyApp {
     rootPage: any = PleaseWaitPage;
     @ViewChild(Nav) nav: Nav;
-    pages: Array<{title: string, component: any}>;    
+    pages: Array<{title: string, component: any}>;
     constructor(
         platform: Platform,
-        afAuth: AngularFireAuth,
+        public afAuth: AngularFireAuth,
         statusBar: StatusBar, splashScreen: SplashScreen) {
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
@@ -31,15 +31,20 @@ export class MyApp {
                 }
 
             });
+            
             this.pages = [
                 {title: 'Home', component: 'HomePage'},
                 {title: 'Category', component: 'CategoryPage'},
                 {title: 'Admin', component: 'AdminPage'},
-                {title: 'Settings', component: 'SettingsPage'}
+                {title: 'Settings', component: 'SettingsPage'},
+                {title: 'Logout', component: 'LoginPage'}
             ];
         });
     }
     openPage(page) {
+        if (page.title == "Logout") {
+            this.afAuth.auth.signOut()
+        }
         this.nav.setRoot(page.component);
     }
 }

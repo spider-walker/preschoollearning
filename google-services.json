@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "482802537972",
-    "firebase_url": "https://immunivac.firebaseio.com",
-    "project_id": "immunivac",
-    "storage_bucket": "immunivac.appspot.com"
+    "project_number": "354733940738",
+    "firebase_url": "https://preschoollearning-edef3.firebaseio.com",
+    "project_id": "preschoollearning-edef3",
+    "storage_bucket": "preschoollearning-edef3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:482802537972:android:fa7d2805f9453140",
+        "mobilesdk_app_id": "1:354733940738:android:ae20c3676a90050e",
         "android_client_info": {
-          "package_name": "com.immunivac"
+          "package_name": "io.preschoollearning"
         }
       },
       "oauth_client": [
         {
-          "client_id": "482802537972-7nlmibt234780o8n29ie53380j76pvdk.apps.googleusercontent.com",
+          "client_id": "354733940738-t736met2tqgeoovhsi4198i9n1amhrf2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBEe9QdmDkLvJVNxhlJBnDIqdRPms6fJss"
+          "current_key": "AIzaSyDb0-Zd0IRcXKRe0mjFbe5eDZxZfkUWBDc"
         }
       ],
       "services": {
