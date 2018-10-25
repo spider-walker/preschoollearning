@@ -18,7 +18,7 @@ export class HomePage {
         public firebaseProvider: UsersProvider,
         public fAuth: AngularFireAuth) {
         try {
-            console.log(this.fAuth.auth.currentUser.email);
+            
             let s = this.firebaseProvider.getDbUsers().subscribe(snapshots => {
                 snapshots.forEach(snapshot => {
                     console.log(snapshot.is_admin);

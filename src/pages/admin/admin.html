@@ -15,5 +15,18 @@
 
 
 <ion-content padding>
+    <ion-buttons end>
+        <button ion-button (click)="addgames()">
+                <ion-icon name="add" style="color:red;text-align: right"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-grid>
+        <ion-row> 
+            <ion-col col-10>Name</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of games | async" > 
+            <ion-col col-10>{{item.name }}</ion-col>
+        </ion-row>
+    </ion-grid> 
 
 </ion-content>

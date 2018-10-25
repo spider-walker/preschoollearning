@@ -5,6 +5,11 @@ export class DbUser {
     name: string;
     is_admin: number;
 }
+export class Games {
+    game_id: number;
+    category: number;
+    name: string;
+}
 export class Children {
     name: string;
     dob: string;

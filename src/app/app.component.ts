@@ -23,7 +23,7 @@ export class MyApp {
             splashScreen.hide();
             const authObserver = afAuth.authState.subscribe(user => {
                 if (user) {
-                    //this.rootPage = 'HomePage';
+                    this.rootPage = 'HomePage';
                     authObserver.unsubscribe();
                 } else {
                     this.rootPage = 'LoginPage';
@@ -35,7 +35,6 @@ export class MyApp {
             this.pages = [
                 {title: 'Home', component: 'HomePage'},
                 {title: 'Category', component: 'CategoryPage'},
-                {title: 'Admin', component: 'AdminPage'},
                 {title: 'Settings', component: 'SettingsPage'},
                 {title: 'Logout', component: 'LoginPage'}
             ];
