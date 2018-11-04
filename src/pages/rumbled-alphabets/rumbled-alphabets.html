@@ -1,40 +1,29 @@
 <ion-header>
-    <ion-navbar color="primary">
-        <button ion-button menuToggle start>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-
-        <ion-title>Rumbled Alphabets</ion-title> 
-        <ion-buttons end>
-            <button ion-button (click)="go_home()">
-                    <ion-icon name="arrow-round-back" style="color:white;text-align: right"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-navbar>
-    
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
 </ion-header>
+
 <ion-content>
-    <hr/>
-    <ion-card>
-        <ion-grid >
-            
-            <ion-row id="dashborad_menu">
-                <ion-col *ngFor="let item of rumblesA" (drop)="drop_item($event,dropData)" (dragover)="allowDrop($event)">
-                    {{item}}
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-</ion-card>
-<hr/> <hr/>
-<ion-card>
-    <ion-grid>
-        <ion-row id="dashborad_menu">
-            <ion-col *ngFor="let item of rumblesB;let i = index "   draggable="true" (dragstart)="ondragstart_item($event,dropData,i)">
-                {{item}}
-        </ion-col>
-    </ion-row>
-</ion-grid>
-</ion-card>
-
-
+  <ion-row>
+    <ion-col col-6 class="left">
+      <div class="header">First Bucket</div>
+      <ion-list [dragula]='"my-bag"' [dragulaModel]="q1">
+        <button ion-item *ngFor="let item of q1" detail-none>
+          {{item}}
+      </button>
+      </ion-list>
+    </ion-col>
+ 
+    <ion-col col-6 class="right">
+      <div class="header">Second Bucket</div>
+      <ion-list [dragula]='"my-bag"' [dragulaModel]="q2">
+        <button ion-item *ngFor="let item of q2" detail-none>
+          {{item}}
+        </button>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>
