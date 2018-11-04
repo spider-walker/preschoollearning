@@ -15,9 +15,7 @@ import {CustomFormsModule} from 'ng2-validation'
 import {ReactiveFormsModule} from '@angular/forms';
 import {ChildrenProvider} from '../providers/children/children';
 import {ImmunizationProvider} from '../providers/immunization/immunization';
-import {NgDragDropModule} from 'ng-drag-drop';
 import {GamesProvider} from '../providers/games/games';
-
 @NgModule({
     declarations: [
         MyApp, PleaseWaitPage
@@ -39,7 +37,7 @@ import {GamesProvider} from '../providers/games/games';
         HttpClientModule,
         AngularFirestoreModule,
         AngularFireAuthModule,
-        NgDragDropModule.forRoot()
+       
     ],
     bootstrap: [IonicApp],
     entryComponents: [
