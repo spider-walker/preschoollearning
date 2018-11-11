@@ -26,7 +26,7 @@
 <hr/>
 <ion-grid>
     <ion-row id="dashborad_menu" [dragula]='"my-bag"' [dragulaModel]="rumblesB">
-        <ion-col *ngFor="let item of rumblesB">
+        <ion-col *ngFor="let item of rumblesB" title="{{item}}">
             {{item}}       
     </ion-col>
 </ion-row>

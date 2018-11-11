@@ -14,18 +14,18 @@ export class RumbledAlphabetsPage {
     public rumblesC: Array<any> = [];
     subs = new Subscription();
     constructor(
-
         private navCtrl: NavController,
         public alertCtrl: AlertController,
         private dragulaService: DragulaService) {
-
-        this.rumblesA = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "W", "X", "Y", "Z"];
-        this.rumblesB = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "W", "X", "Y", "Z"];
+        let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "W", "X", "Y", "Z"];
+        this.rumblesA = letters.slice(0, 7);
+        this.rumblesB = letters.slice(0, 7);
+        this.rumblesC = letters.slice(0, 7);
         this.rumblesB.sort(() => Math.random() - 0.5);
         let showed = this.random(5, 10);
         let hidden = [];
         for (let m = 0; m < showed; m++) {
-            let h = this.random(4, 25);
+            let h = this.random(Math.trunc((this.rumblesA.length * .3)), Math.trunc((this.rumblesA.length * .8)));
             hidden.push(h);
         }
         for (let p = 0; p < this.rumblesA.length; p++) {
@@ -35,23 +35,33 @@ export class RumbledAlphabetsPage {
             }
 
         }
-        for (let p = 0; p < this.rumblesB.length; p++) {
-            for (let a = 0; a < this.rumblesA.length; a++) {
-                if (this.rumblesB[p] == this.rumblesA[a]) {
-                    console.log(this.rumblesB[p])
-                    this.rumblesB.splice(p, 1);
-                }
+        for (let p = 0; p < this.rumblesA.length; p++) {
+            let index = this.rumblesB.indexOf(this.rumblesA[p]);
+            if (index > -1) {
+                this.rumblesB.splice(index, 1);
             }
+
         }
         this.dragulaService.dragend().subscribe((value) => {
             let index = ([].slice.call(value.el.parentElement.children).indexOf(value.el));
-            this.dragulaService.cancel();
-            this.rumblesA.splice(index, 1);
+
+            console.log(value.el.textContent.trim());
+            if (this.rumblesA[index] == '__') {
+                this.rumblesA.splice(index, 1);
+                if (this.rumblesA.indexOf(value.el.textContent.trim()) == -1) {
+                    this.rumblesA[index] = value.el.textContent.trim();
+                }
+            } else {
+
+            }
+            console.log(this.rumblesA);
+            console.log(this.rumblesB);
+
         });
 
-        this.dragulaService.drop().subscribe((args) => {
-            console.log(([].slice.call(args.source.parentElement.children).indexOf(args.source.parentElement)));
-            console.log([].slice.call(args.target.parentElement.children).indexOf(args.target.parentElement));
+        this.dragulaService.drag().subscribe((args) => {
+            console.log("Dragged:" + args.el.hasAttribute("title").valueOf());
+            let index = this.rumblesB.indexOf(args.el.textContent.trim());
         });
     }
     random(min: number, max: number) {
