@@ -1,5 +1,12 @@
 page-count-numbers {
 
+
+    hr{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 2em;
+
+    }
     ion-card {
         width:100%;
         margin: 0 !important;
@@ -56,7 +63,7 @@ page-count-numbers {
     #dashborad_menu ion-col:nth-child(10n) {
         background-color: rgba(12, 255, 10, 0.9) !important;
     }
-    
+
     #dashborad_menu ion-col:nth-child(20n) {
         background-color: rgba(255, 0, 5, 0.8) !important;
     }
@@ -84,13 +91,49 @@ page-count-numbers {
     }
 
     .very-small-text :hover{
-       
+
     }
     #dashborad_menu ion-col ion-icon{
         font-size: 2em;
         display: block;
         text-align: center;
     }
+
+
+    /* Draggable*/
+
+    .drag-border {
+        border: #ff525b dashed 2px;
+    }
+
+    .drag-handle {
+        cursor: move; /* fallback if grab cursor is unsupported */
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+    }
+
+    .drag-handle:active { 
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+    }
+
+    /* Droppable */
+
+    .drag-hint-border {
+        border: #3c763d dashed 2px;
+    }
+
+    .drag-over-border {
+        border: #fbbc05 dashed 2px;
+    }
+
+    .drag-transit {
+        border: #3500FF dashed 2px;
+    }
+
+
 
 
 }

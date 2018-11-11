@@ -11,29 +11,38 @@
             </button>
         </ion-buttons>
     </ion-navbar>
-</ion-header>
-<ion-content>
-    <hr/>
-    <ion-card>
-        <ion-grid >
 
-            <ion-row id="dashborad_menu"  (drop)="drop_item($event,dropData)" (dragover)="allowDrop($event)">
-                <ion-col *ngFor="let item of rumblesA">
-                    {{item}}
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-</ion-card>
-<hr/> <hr/>
-<ion-card>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-icon name="logo-twitter" item-start></ion-icon>
+        Score
+        <ion-badge item-end>{{score_rumbled_numbers}}</ion-badge>
+    </ion-item>
+    <hr/>
     <ion-grid>
-         <ion-row id="dashborad_menu">
-            <ion-col *ngFor="let item of rumblesB;let i = index "   draggable="true" (dragstart)="ondragstart_item($event,dropData,i)">
-                {{item}}
+
+        <ion-row id="dashborad_menu">
+            <ion-col  *ngFor="let a of rumblesA;let i=index" (click)="process_drag('A',a,i)"  >
+                {{a}}            
         </ion-col>
     </ion-row>
 </ion-grid>
-</ion-card>
-
+<hr/>
+<ion-grid>
+    <ion-row id="dashborad_menu">
+        <ion-col *ngFor="let b of rumblesB;let i=index" (click)="process_drag('B',b,i)">
+            {{b}}       
+    </ion-col>
+</ion-row>
+</ion-grid>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+      <ion-title>
+          <button ion-button full (click)="start_game()">Restart Game</button>
+      </ion-title>
+  </ion-toolbar>
+</ion-footer>

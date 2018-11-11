@@ -1,7 +1,8 @@
-import {Component, ElementRef, Input} from '@angular/core';
-import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, AlertController, ToastController, LoadingController, Loading} from 'ionic-angular';
 import {DragulaService} from 'ng2-dragula';
 import {Subscription} from 'rxjs';
+import {Storage} from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -12,57 +13,156 @@ export class RumbledAlphabetsPage {
     public rumblesA: Array<any> = [];
     public rumblesB: Array<any> = [];
     public rumblesC: Array<any> = [];
+    public moving_a: string = '';
+    public moving_b: string = '';
+    public pox_rumbled_letters = 0;
+    public score_rumbled_letters = 0;
+    public no_of_retries = 1;
     subs = new Subscription();
+    public loading: Loading;
     constructor(
+        public loadingCtrl: LoadingController,
         private navCtrl: NavController,
         public alertCtrl: AlertController,
-        private dragulaService: DragulaService) {
-        let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "W", "X", "Y", "Z"];
-        this.rumblesA = letters.slice(0, 7);
-        this.rumblesB = letters.slice(0, 7);
-        this.rumblesC = letters.slice(0, 7);
-        this.rumblesB.sort(() => Math.random() - 0.5);
-        let showed = this.random(5, 10);
-        let hidden = [];
-        for (let m = 0; m < showed; m++) {
-            let h = this.random(Math.trunc((this.rumblesA.length * .3)), Math.trunc((this.rumblesA.length * .8)));
-            hidden.push(h);
-        }
-        for (let p = 0; p < this.rumblesA.length; p++) {
-            if (hidden.find(x => x === p)) {
+        public storage: Storage,
+        public toastCtrl: ToastController,
+        public dragulaService: DragulaService) {
+        storage.get('score_rumbled_letters').then((val) => {
+            if (val == null) {
+                this.pox_rumbled_letters = 0;
+                storage.set('score_rumbled_letters', 0);
             } else {
-                this.rumblesA[p] = "__";
+                this.score_rumbled_letters = val;
             }
-
-        }
-        for (let p = 0; p < this.rumblesA.length; p++) {
-            let index = this.rumblesB.indexOf(this.rumblesA[p]);
-            if (index > -1) {
-                this.rumblesB.splice(index, 1);
+        });
+        storage.get('pox_rumbled_letters').then((val) => {
+            if (val == null) {
+                this.pox_rumbled_letters = 5;
+                storage.set('pox_rumbled_letters', 5);
+            } else {
+                this.pox_rumbled_letters = val;
             }
-
+            this.start_game();
+        });
+    }
+    process_drag(source: string, b: string, i: number) {
+        console.log(source, b, i, this.moving_b);
+        if (source == "B") {
+            this.moving_a = "";
+            this.moving_b = b;
         }
-        this.dragulaService.dragend().subscribe((value) => {
-            let index = ([].slice.call(value.el.parentElement.children).indexOf(value.el));
-
-            console.log(value.el.textContent.trim());
-            if (this.rumblesA[index] == '__') {
-                this.rumblesA.splice(index, 1);
-                if (this.rumblesA.indexOf(value.el.textContent.trim()) == -1) {
-                    this.rumblesA[index] = value.el.textContent.trim();
+        if (source == "A" && this.moving_b != '') {
+            if (this.rumblesA[i] != '') {
+                console.log("" + this.rumblesA[i]);
+                console.log(this.moving_b);
+                if (this.rumblesA[i] == '__') {
+                    this.rumblesA[i] = this.moving_b;
+                    let index = this.rumblesB.indexOf(this.moving_b);
+                    if (index > -1) {
+                        this.rumblesB.splice(index, 1);
+                    }
                 }
-            } else {
 
             }
-            console.log(this.rumblesA);
-            console.log(this.rumblesB);
+            this.moving_a = "";
+            this.moving_b = "";
+        }
+        if (this.rumblesB.length == 0) {
+            if (this.arraysEqual(this.rumblesA, this.rumblesC)) {
+                this.pox_rumbled_letters += 2;
+                this.score_rumbled_letters++;
+                this.storage.set('pox_rumbled_letters', this.pox_rumbled_letters);
+                this.storage.set('score_rumbled_letters', this.score_rumbled_letters);
+                let toast = this.toastCtrl.create({
+                    message: 'You have earned a point. Next level is setting up.',
+                    duration: 3000,
+                    position: 'middle'
+                });
 
-        });
+                toast.onDidDismiss(() => {
+                    this.start_game();
+                });
 
-        this.dragulaService.drag().subscribe((args) => {
-            console.log("Dragged:" + args.el.hasAttribute("title").valueOf());
-            let index = this.rumblesB.indexOf(args.el.textContent.trim());
-        });
+                toast.present();
+                this.no_of_retries = 1;
+
+            } else {
+                this.no_of_retries++;
+                if (this.no_of_retries == 3) {
+                    this.pox_rumbled_letters -= 2;
+                    this.score_rumbled_letters--;
+                    let toast = this.toastCtrl.create({
+                        message: 'Sorry, wrong arrangment! You have lost a point. Game will restart.',
+                        duration: 3000,
+                        position: 'middle'
+                    });
+
+                    toast.onDidDismiss(() => {
+                        this.start_game();
+                    });
+
+                    toast.present();
+                } else {
+                    let toast = this.toastCtrl.create({
+                        message: 'Sorry, wrong arrangment! Game will restart.',
+                        duration: 3000,
+                        position: 'middle'
+                    });
+
+                    toast.onDidDismiss(() => {
+                        this.start_game();
+                    });
+
+                    toast.present();
+                }
+
+            }
+        }
+
+    }
+    start_game() {
+        let my_this = this;
+        //this.presentLoadingDefault();
+        setTimeout(function () {
+            console.log("Game is starting:" + my_this.pox_rumbled_letters);
+            let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U","V", "W", "X", "Y", "Z"];
+            my_this.rumblesA = letters.slice(0, my_this.pox_rumbled_letters);
+            my_this.rumblesB = letters.slice(0, my_this.pox_rumbled_letters);
+            my_this.rumblesC = letters.slice(0, my_this.pox_rumbled_letters);
+            my_this.rumblesB.sort(() => Math.random() - 0.5);
+            let showed = my_this.random(5, 10);
+            let hidden = [];
+            for (let m = 0; m < showed; m++) {
+                let h = my_this.random(Math.trunc((my_this.rumblesA.length * .3)), Math.trunc((my_this.rumblesA.length * .8)));
+                hidden.push(h);
+            }
+            for (let p = 0; p < my_this.rumblesA.length; p++) {
+                if (hidden.find(x => x === p)) {
+                } else {
+                    my_this.rumblesA[p] = "__";
+                }
+
+            }
+            for (let p = 0; p < my_this.rumblesA.length; p++) {
+                let index = my_this.rumblesB.indexOf(my_this.rumblesA[p]);
+                if (index > -1) {
+                    my_this.rumblesB.splice(index, 1);
+                }
+
+            }
+            //my_this.loading.dismissAll();
+        }, 2000);
+
+
+    }
+    arraysEqual(arr1: Array<string>, arr2: Array<string>) {
+        if (arr1.length !== arr2.length)
+            return false;
+        for (let i = arr1.length; i--;) {
+            if (arr1[i] !== arr2[i])
+                return false;
+        }
+        return true;
     }
     random(min: number, max: number) {
         if (max == null) {
@@ -73,5 +173,18 @@ export class RumbledAlphabetsPage {
     }
     go_home() {
         this.navCtrl.setRoot('CategoryPage');
+    }
+    presentLoadingDefault() {
+        this.loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+        });
+        this.loading.present();
+    }
+    presentToast(message: string, duration: number) {
+        const toast = this.toastCtrl.create({
+            message: message,
+            duration: duration
+        });
+        toast.present();
     }
 }

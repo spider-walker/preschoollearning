@@ -11,25 +11,38 @@
             </button>
         </ion-buttons>
     </ion-navbar>
-    
+
 </ion-header>
 
 <ion-content>
+    <ion-item>
+        <ion-icon name="logo-twitter" item-start></ion-icon>
+        Score
+        <ion-badge item-end>{{score_rumbled_letters}}</ion-badge>
+    </ion-item>
+    <hr/>
     <ion-grid>
 
-        <ion-row id="dashborad_menu" [dragula]='"my-bag"' [dragulaModel]="rumblesA">
-            <ion-col  *ngFor="let item of rumblesA" detail-none >
-                {{item}}            
+        <ion-row id="dashborad_menu">
+            <ion-col  *ngFor="let a of rumblesA;let i=index" (click)="process_drag('A',a,i)"  >
+                {{a}}            
         </ion-col>
     </ion-row>
 </ion-grid>
 <hr/>
 <ion-grid>
-    <ion-row id="dashborad_menu" [dragula]='"my-bag"' [dragulaModel]="rumblesB">
-        <ion-col *ngFor="let item of rumblesB" title="{{item}}">
-            {{item}}       
+    <ion-row id="dashborad_menu">
+        <ion-col *ngFor="let b of rumblesB;let i=index" (click)="process_drag('B',b,i)">
+            {{b}}       
     </ion-col>
 </ion-row>
 </ion-grid>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+      <ion-title>
+          <button ion-button full (click)="start_game()">Restart Game</button>
+      </ion-title>
+  </ion-toolbar>
+</ion-footer>
