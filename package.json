@@ -28,7 +28,7 @@
     "@ionic-native/splash-screen": "~4.15.0",
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic-native/text-to-speech": "^4.16.0",
-    "@ionic/storage": "2.2.0",
+    "@ionic/storage": "^2.2.0",
     "angular2-moment": "^1.9.0",
     "angularfire2": "^5.0.2",
     "chart.js": "^2.7.3",

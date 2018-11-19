@@ -1,18 +1,54 @@
-<!--
-  Generated template for the DragTheShapesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
 
-  <ion-navbar>
-    <ion-title>DragTheShapes</ion-title>
-  </ion-navbar>
+        <ion-title>Drag The Shapes</ion-title> 
+        <ion-buttons end>
+            <button ion-button (click)="go_home()">
+                    <ion-icon name="arrow-round-back" style="color:white;text-align: right"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
+<ion-content>
+    <ion-item>
+        <ion-icon name="logo-twitter" item-start></ion-icon>
+        Score
+        <ion-badge item-end>{{score_shapes}}</ion-badge>
+    </ion-item>
+    <hr/>
+    <ion-card>
+        <img src="../assets/imgs/shapes/{{shapes}}.jpg" id="career-image" />
+        <ion-card-content>
+            <ion-card-title>
+                Which shape looks like above?
+            </ion-card-title>
+            <p>
 
-<ion-content padding>
+            </p>
+        </ion-card-content>
+        <ion-row no-padding>
+            <ion-grid radio-group [(ngModel)]="answer">
+                      <ion-col *ngFor="let b of answers;let i=index"  col-6>
+                    <ion-label><img src="../assets/imgs/shapes/{{b}}.jpg" id="career-image" /></ion-label>
+                    <ion-radio  color="primary" value="{{b}}"></ion-radio>
+                </ion-col>
+               
+            </ion-grid>
+
+        </ion-row>
+        <button ion-button block  (click)="process_answers()">Check Answer</button>
+    </ion-card>
 
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>

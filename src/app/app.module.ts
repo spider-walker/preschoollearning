@@ -16,6 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ChildrenProvider} from '../providers/children/children';
 import {ImmunizationProvider} from '../providers/immunization/immunization';
 import {GamesProvider} from '../providers/games/games';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
     declarations: [
         MyApp, PleaseWaitPage
@@ -37,7 +38,7 @@ import {GamesProvider} from '../providers/games/games';
         HttpClientModule,
         AngularFirestoreModule,
         AngularFireAuthModule,
-       
+       IonicStorageModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [
