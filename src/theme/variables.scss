@@ -86,5 +86,7 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+$fa-font-path: $font-path;
+@import "font-awesome";
 
 

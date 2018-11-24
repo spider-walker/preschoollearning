@@ -22,33 +22,24 @@
     </ion-item>
     <hr/>
     <ion-card>
-        <img src="../assets/imgs/shapes/{{shapes}}.jpg" id="career-image" />
+        <img src="../assets/imgs/shapes/{{shapes}}.jpg"  />
         <ion-card-content>
-            <ion-card-title>
+            <ion-card-title style="font-size: 0.8em">
                 Which shape looks like above?
             </ion-card-title>
-            <p>
+        </ion-card-content>      
 
-            </p>
-        </ion-card-content>
-        <ion-row no-padding>
-            <ion-grid radio-group [(ngModel)]="answer">
-                      <ion-col *ngFor="let b of answers;let i=index"  col-6>
-                    <ion-label><img src="../assets/imgs/shapes/{{b}}.jpg" id="career-image" /></ion-label>
-                    <ion-radio  color="primary" value="{{b}}"></ion-radio>
-                </ion-col>
-               
-            </ion-grid>
-
-        </ion-row>
-        <button ion-button block  (click)="process_answers()">Check Answer</button>
+    </ion-card>
+    <ion-card>
+        <!-- basic usage -->
+        
     </ion-card>
 
 </ion-content>
 <ion-footer>
     <ion-toolbar>
         <ion-title>
-
+            <button ion-button block  (click)="process_answers()">Check Answer</button>
         </ion-title>
     </ion-toolbar>
 </ion-footer>

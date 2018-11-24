@@ -44,6 +44,10 @@ export class WhoAmIPage {
         return min + Math.floor(Math.random() * (max - min + 1));
     }
     start_game() {
+        this.answer="";
+        if (this.pox_whoami == this.careers.length) {
+            this.pox_whoami = 0;
+        }
         this.whoami = this.careers[this.pox_whoami];
         this.answers = [];
         this.answers.push(this.whoami);
@@ -94,7 +98,7 @@ export class WhoAmIPage {
             });
 
             alert.present();
-            
+
         }
     }
 

@@ -23,7 +23,7 @@ export class MyApp {
             splashScreen.hide();
             const authObserver = afAuth.authState.subscribe(user => {
                 if (user) {
-                    // this.rootPage = 'HomePage';
+                   this.rootPage = 'DragTheShapesPage';
                     authObserver.unsubscribe();
                 } else {
                     this.rootPage = 'LoginPage';
