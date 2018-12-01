@@ -17,11 +17,9 @@ import {ChildrenProvider} from '../providers/children/children';
 import {ImmunizationProvider} from '../providers/immunization/immunization';
 import {GamesProvider} from '../providers/games/games';
 import { IonicStorageModule } from '@ionic/storage';
-import {FaIconComponent} from "../components/fa.icon.component/fa-icon-component";
 @NgModule({
     declarations: [
         MyApp, PleaseWaitPage,
-        FaIconComponent
     ],
     imports: [
         BrowserModule,

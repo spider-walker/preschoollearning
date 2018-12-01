@@ -21,20 +21,24 @@
         <ion-badge item-end>{{score_shapes}}</ion-badge>
     </ion-item>
     <hr/>
-    <ion-card>
-        <img src="../assets/imgs/shapes/{{shapes}}.jpg"  />
-        <ion-card-content>
-            <ion-card-title style="font-size: 0.8em">
-                Which shape looks like above?
-            </ion-card-title>
-        </ion-card-content>      
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12  class="chosen-image"><fa-icon [name]="shapes"></fa-icon></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <h4 ion-text color="danger">Which shape looks like above?</h4>                
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6 *ngFor="let b of answers;let i=index" class="choices-image" (click)="select_image(b,$event)">
+                     <fa-icon [name]="b" ></fa-icon>
+            </ion-col>
+        </ion-row>
 
-    </ion-card>
-    <ion-card>
-        <!-- basic usage -->
-        
-    </ion-card>
-
+    </ion-grid>
 </ion-content>
 <ion-footer>
     <ion-toolbar>

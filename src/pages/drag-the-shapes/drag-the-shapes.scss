@@ -1,15 +1,24 @@
 page-drag-the-shapes {
-    ion-card img{
-        max-height: 165px!important
+    .chosen-image{
+        font-size: 7em!important;
+        margin: auto;
+        width: 50%;
+        border: 3px solid green;
+        padding: 10px;
     }
-    #career-image{
-        max-width: 40%;
-        min-width: 40%;
-        display: block;
-        float: left;
-        border:5px #fff solid;
-        height: 40%;
+    .choices-image{
+        font-size: 4em!important;
+        margin: auto;
+        width: 50%;
+        border: 1px solid #999999;
+        padding: 10px;
+    }
+    .content-md {
         text-align: center;
-        vertical-align: middle;
+    }
+    .active {
+        border: 1px solid green;
+        color:green;
+        background-color: rgba(233,223,233,0.9)
     }
 }

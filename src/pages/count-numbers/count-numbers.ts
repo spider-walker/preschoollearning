@@ -69,7 +69,19 @@ export class CountNumbersPage {
         }
         if (this.rumblesB.length == 0) {
             if (this.arraysEqual(this.rumblesA, this.rumblesC)) {
-                this.pox_rumbled_numbers += 2;
+                if (this.pox_rumbled_numbers >= 30) {
+                    let alert = this.alertCtrl.create({
+                        message: "Perfect. You have completed",
+                        buttons: [
+                            {
+                                text: "Ok",
+                                role: 'cancel'
+                            }
+                        ]
+                    });
+                    alert.present();
+                }
+                this.pox_rumbled_numbers += 5;
                 this.score_rumbled_numbers++;
                 this.storage.set('pox_rumbled_numbers', this.pox_rumbled_numbers);
                 this.storage.set('score_rumbled_numbers', this.score_rumbled_numbers);

@@ -69,7 +69,19 @@ export class RumbledAlphabetsPage {
         }
         if (this.rumblesB.length == 0) {
             if (this.arraysEqual(this.rumblesA, this.rumblesC)) {
-                this.pox_rumbled_letters += 2;
+                if (this.pox_rumbled_letters >= 26) {
+                    let alert = this.alertCtrl.create({
+                        message: "Perfect. You have completed",
+                        buttons: [
+                            {
+                                text: "Ok",
+                                role: 'cancel'
+                            }
+                        ]
+                    });
+                    alert.present();
+                }
+                this.pox_rumbled_letters += 5;
                 this.score_rumbled_letters++;
                 this.storage.set('pox_rumbled_letters', this.pox_rumbled_letters);
                 this.storage.set('score_rumbled_letters', this.score_rumbled_letters);
@@ -125,7 +137,7 @@ export class RumbledAlphabetsPage {
         //this.presentLoadingDefault();
         setTimeout(function () {
             console.log("Game is starting:" + my_this.pox_rumbled_letters);
-            let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U","V", "W", "X", "Y", "Z"];
+            let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
             my_this.rumblesA = letters.slice(0, my_this.pox_rumbled_letters);
             my_this.rumblesB = letters.slice(0, my_this.pox_rumbled_letters);
             my_this.rumblesC = letters.slice(0, my_this.pox_rumbled_letters);
