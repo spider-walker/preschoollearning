@@ -51,10 +51,20 @@ export class CountNumbersPage {
             this.moving_a = "";
             this.moving_b = b;
         }
+        if (source == "A" && this.moving_b == "") {
+            if (this.rumblesA[i] != "") {
+                if (this.rumblesA[i] != '__') {
+                    this.rumblesA[i] = '__';
+                    this.rumblesB.push(b);
+                    this.rumblesB.sort(() => Math.random() - 0.5);
+                }
+
+            }
+            this.moving_a = "";
+            this.moving_b = "";
+        }
         if (source == "A" && this.moving_b != '') {
             if (this.rumblesA[i] != '') {
-                console.log("" + this.rumblesA[i]);
-                console.log(this.moving_b);
                 if (this.rumblesA[i] == '__') {
                     this.rumblesA[i] = this.moving_b;
                     let index = this.rumblesB.indexOf(this.moving_b);
@@ -101,14 +111,14 @@ export class CountNumbersPage {
             } else {
                 this.no_of_retries++;
                 if (this.no_of_retries == 3) {
-                    this.pox_rumbled_numbers -= 2;
-                    this.score_rumbled_numbers--;
+                    this.score_rumbled_numbers = 0;
                     let toast = this.toastCtrl.create({
-                        message: 'Sorry, wrong arrangment! You have lost a point. Game will restart.',
+                        message: 'Sorry, wrong arrangment!  Game will restart.',
                         duration: 3000,
                         position: 'middle'
                     });
-
+                    this.storage.set('pox_rumbled_numbers', this.pox_rumbled_numbers);
+                    this.storage.set('score_rumbled_numbers', this.score_rumbled_numbers);
                     toast.onDidDismiss(() => {
                         this.start_game();
                     });
@@ -138,7 +148,7 @@ export class CountNumbersPage {
         setTimeout(function () {
             console.log("Game is starting:" + my_this.pox_rumbled_numbers);
             let letters: Array<string> = [];
-            for (let m = 1; m < 21; m++) {
+            for (let m = 1; m < 50; m++) {
                 letters.push(m.toString());
             }
             my_this.rumblesA = letters.slice(0, my_this.pox_rumbled_numbers);
@@ -201,5 +211,10 @@ export class CountNumbersPage {
             duration: duration
         });
         toast.present();
+    }
+    restart_game() {
+        this.pox_rumbled_numbers = 5;
+        this.storage.set('pox_rumbled_numbers', 5);
+        this.start_game();
     }
 }

@@ -44,7 +44,7 @@ export class WhoAmIPage {
         return min + Math.floor(Math.random() * (max - min + 1));
     }
     start_game() {
-        this.answer="";
+        this.answer = "";
         if (this.pox_whoami == this.careers.length) {
             this.pox_whoami = 0;
         }
@@ -70,36 +70,43 @@ export class WhoAmIPage {
     } go_home() {
         this.navCtrl.setRoot('CategoryPage');
     }
+    show_answers() {
+        this.answer = this.whoami;
+        this.showAlert("I am", this.answer.toUpperCase());
+        this.pox_whoami++;
+        this.storage.set("pox_whoami", this.pox_whoami);
+        this.storage.set("score_whoami", this.score_whoami);
+    }
     process_answers() {
-        console.log(this.answer);
+        if (this.answer == '') {
+            this.showAlert("Please Make a selection", "Try again!");
+            return;
+        }
         if (this.answer == this.whoami) {
             this.pox_whoami++;
             this.score_whoami++;
             this.storage.set("pox_whoami", this.pox_whoami);
             this.storage.set("score_whoami", this.score_whoami);
-            let alert = this.alertCtrl.create({
-                title: 'You got it right!',
-                subTitle: 'Go to next!',
-                buttons: ['ok']
-            });
-            alert.onDidDismiss(() => {
-                this.start_game();
-            });
+            this.showAlert('You got it right!', 'Go to next!');
 
-            alert.present();
         } else {
-            let alert = this.alertCtrl.create({
-                title: 'Wrong!',
-                subTitle: 'Try again',
-                buttons: ['ok']
-            });
-            alert.onDidDismiss(() => {
-                this.start_game();
-            });
-
-            alert.present();
+            this.score_whoami = 0;
+            this.storage.set("pox_whoami", this.pox_whoami);
+            this.storage.set("score_whoami", this.score_whoami);
+            this.showAlert("Wrong!", "Try again!");
 
         }
     }
+    showAlert(message: string, subTitle: string) {
+        let alert = this.alertCtrl.create({
+            title: message,
+            subTitle: subTitle,
+            buttons: ['ok']
+        });
+        alert.onDidDismiss(() => {
+            this.start_game();
+        });
 
+        alert.present();
+    }
 }

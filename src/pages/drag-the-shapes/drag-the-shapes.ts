@@ -71,13 +71,13 @@ export class DragTheShapesPage {
         var redDivs = document.querySelectorAll('.active');
 
         if (redDivs.length) {
-             console.log('A');
+            console.log('A');
             for (let i = 0; i < redDivs.length; i++) {
                 redDivs[i].classList.remove('active');
                 redDivs[i].classList.add('black')
             }
         } else {
-         console.log('B');
+            console.log('B');
             var blackDivs = document.querySelectorAll('.black');
             for (let i = 0; i < blackDivs.length; i++) {
                 blackDivs[i].classList.remove('black')
@@ -107,6 +107,9 @@ export class DragTheShapesPage {
 
             alert.present();
         } else {
+            this.score_shapes = 0;
+            this.storage.set("pox_shapes", this.pox_shapes);
+            this.storage.set("score_shapes", this.score_shapes);
             let alert = this.alertCtrl.create({
                 title: 'Wrong!',
                 subTitle: 'Try again',

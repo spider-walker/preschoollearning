@@ -51,6 +51,18 @@ export class RumbledAlphabetsPage {
             this.moving_a = "";
             this.moving_b = b;
         }
+        if (source == "A" && this.moving_b == "") {
+            if (this.rumblesA[i] != "") {
+                if (this.rumblesA[i] != '__') {
+                    this.rumblesA[i] = '__';
+                    this.rumblesB.push(b);
+
+                }
+
+            }
+            this.moving_a = "";
+            this.moving_b = "";
+        }
         if (source == "A" && this.moving_b != '') {
             if (this.rumblesA[i] != '') {
                 console.log("" + this.rumblesA[i]);
@@ -101,14 +113,14 @@ export class RumbledAlphabetsPage {
             } else {
                 this.no_of_retries++;
                 if (this.no_of_retries == 3) {
-                    this.pox_rumbled_letters -= 2;
-                    this.score_rumbled_letters--;
+                    this.score_rumbled_letters = 0;
                     let toast = this.toastCtrl.create({
                         message: 'Sorry, wrong arrangment! You have lost a point. Game will restart.',
                         duration: 3000,
                         position: 'middle'
                     });
-
+                    this.storage.set('pox_rumbled_letters', this.pox_rumbled_letters);
+                    this.storage.set('score_rumbled_letters', this.score_rumbled_letters);
                     toast.onDidDismiss(() => {
                         this.start_game();
                     });
@@ -131,6 +143,11 @@ export class RumbledAlphabetsPage {
             }
         }
 
+    }
+    restart_game() {
+        this.pox_rumbled_letters = 5;
+        this.storage.set('pox_rumbled_letters', 5);
+        this.start_game();
     }
     start_game() {
         let my_this = this;
