@@ -1,20 +1,13 @@
-<ion-header>
-    <ion-navbar color="primary">
-        <button ion-button menuToggle start>
+<ion-content>
+    <ion-navbar color="primary" transparent>
+        <button ion-button menuToggle start clear>
             <ion-icon name="menu"></ion-icon>
         </button>
-
-        <ion-title>Home</ion-title> 
+        <ion-title>Pre-School App</ion-title> 
     </ion-navbar>
-</ion-header>
-
-<ion-content style="background-image: url('../assets/imgs/bokeh-cover-bg.jpg');background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;">
-    <h2 ion-text  text-center style='color: #fff'>Pre-School App</h2>
     <p ion-text  text-center>
-        <i ion-text color="primary">with</i> <br/>
-        <a ion-text color="secondary">Parental Control</a>
+        <i ion-text class="primary-1">with</i> <br/>
+        <a ion-text class="secondary-2">Parental Control</a>
     </p> 
     <hr/>
     <ion-grid>
@@ -30,7 +23,7 @@
                 </span>
             </ion-col>
             <ion-col col-6 [hidden]="!is_admin">
-                <span class="circle-frame">
+                     <span class="circle-frame">
                     <a  class="ajax-link"  (click)="goToOtherPage('AdminPage')">
                         <ion-icon name="people"></ion-icon>
                     </a>

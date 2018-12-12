@@ -91,6 +91,19 @@ export class DragTheShapesPage {
     }
     process_answers() {
         console.log(this.answer);
+        if (this.answer == undefined){
+            let alert = this.alertCtrl.create({
+                title: 'Please select a shape!',
+                subTitle: 'Make a selection',
+                buttons: ['ok']
+            });
+            alert.onDidDismiss(() => {
+                this.start_game();
+            });
+
+            alert.present();
+            return;
+        }
         if (this.answer == this.shapes) {
             this.pox_shapes++;
             this.score_shapes++;

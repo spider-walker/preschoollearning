@@ -1,39 +1,24 @@
-<ion-header>
-    <ion-navbar color="primary">
-        <button ion-button menuToggle start>
+<ion-content>
+    <ion-navbar color="primary" transparent>
+        <button ion-button menuToggle start clear>
             <ion-icon name="menu"></ion-icon>
         </button>
 
         <ion-title>Category</ion-title> 
         <ion-buttons end>
-            <button ion-button (click)="go_home()">
+            <button ion-button (click)="go_home()" clear>
                     <ion-icon name="arrow-round-back" style="color:white;text-align: right"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
-</ion-header>
-<ion-content>
-    <h2 ion-text  text-center>Pre-School App</h2>
-    <p ion-text  text-center>
-        <i ion-text color="primary">with</i> <br/>
-        <a ion-text color="secondary">Parental Control</a>
-    </p> 
+    
+    <h2 ion-text  text-center class="wordart">PRESCHOOL</h2>
+    <h3 ion-text  text-center class="wordart2"> ACTIVITIES</h3>
+
     <hr/>
-    <ion-grid>
-        <ion-row id="dashborad_menu">
-            <ion-col col-6 *ngFor="let item of pages">
-                <span class="circle-frame">
-                    <a  class="ajax-link" (click)="goToOtherPage(item)">
-                        <ion-icon name="{{item.icon}}"></ion-icon>
-                    </a>
-                </span>
-                <span class="very-small-text">
-                   {{item.title}}
-                </span>
-            </ion-col>
-            
-        </ion-row>
-    </ion-grid>
+    <button *ngFor="let item of pages" ion-button color="secondary"  (click)="goToOtherPage(item)" clear block class='button-activities'> {{item.title}} </button>
+
+
 
 
 </ion-content>

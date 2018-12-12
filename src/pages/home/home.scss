@@ -1,4 +1,15 @@
 page-home {
+    ion-content{
+        background-image: url('../assets/imgs/bokeh-cover-bg1.jpg');background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+    .primary-1{
+        color: #ffffff;
+    }
+    .secondary-2{
+       color: #ffffff; 
+    }
     ion-card {
         width:100%;
         height:300px;
