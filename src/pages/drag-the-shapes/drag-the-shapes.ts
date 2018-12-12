@@ -44,6 +44,7 @@ export class DragTheShapesPage {
         return min + Math.floor(Math.random() * (max - min + 1));
     }
     start_game() {
+        this.answer ="";
         this.shapes = this.careers[this.pox_shapes];
         this.answers = [];
         this.answers.push(this.shapes);
@@ -58,12 +59,12 @@ export class DragTheShapesPage {
             }
         }
         this.answers.sort(() => Math.random() - 0.5);
-        console.log(this.answers);
+        
     }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad WhoAmIPage');
-    } go_home() {
+    ionViewDidLoad() { 
+    } 
+    go_home() {
         this.navCtrl.setRoot('CategoryPage');
     }
     select_image(b: string, e: any) {
@@ -71,14 +72,12 @@ export class DragTheShapesPage {
         var redDivs = document.querySelectorAll('.active');
 
         if (redDivs.length) {
-            console.log('A');
-            for (let i = 0; i < redDivs.length; i++) {
+             for (let i = 0; i < redDivs.length; i++) {
                 redDivs[i].classList.remove('active');
                 redDivs[i].classList.add('black')
             }
         } else {
-            console.log('B');
-            var blackDivs = document.querySelectorAll('.black');
+             var blackDivs = document.querySelectorAll('.black');
             for (let i = 0; i < blackDivs.length; i++) {
                 blackDivs[i].classList.remove('black')
                 blackDivs[i].classList.add('red')
@@ -90,14 +89,15 @@ export class DragTheShapesPage {
         this.answer = b;
     }
     process_answers() {
-        console.log(this.answer);
-        if (this.answer == undefined){
+        console.log("dssjhsdhdfhfh"+this.answer);
+        if (this.answer == undefined||this.answer ==""){
             let alert = this.alertCtrl.create({
                 title: 'Please select a shape!',
                 subTitle: 'Make a selection',
                 buttons: ['ok']
             });
             alert.onDidDismiss(() => {
+                 this.answer="";
                 this.start_game();
             });
 
@@ -115,6 +115,7 @@ export class DragTheShapesPage {
                 buttons: ['ok']
             });
             alert.onDidDismiss(() => {
+                this.answer="";
                 this.start_game();
             });
 
@@ -129,12 +130,14 @@ export class DragTheShapesPage {
                 buttons: ['ok']
             });
             alert.onDidDismiss(() => {
+                this.answer=="";
                 this.start_game();
             });
 
             alert.present();
 
         }
+        this.answer="";
     }
 
 }

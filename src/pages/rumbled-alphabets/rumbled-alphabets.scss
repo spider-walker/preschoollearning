@@ -1,4 +1,9 @@
 page-rumbled-alphabets {
+    ion-content{
+        background-image: url('../assets/imgs/bokeh-cover-bg4.jpg');background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
     hr{
       margin-top: 10px;
       margin-bottom: 10px;

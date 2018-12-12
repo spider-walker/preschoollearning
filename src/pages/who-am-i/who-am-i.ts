@@ -109,4 +109,25 @@ export class WhoAmIPage {
 
         alert.present();
     }
+    select_image(b: string, e: any) {
+        let a = document.getElementsByClassName('choices-image');
+        var redDivs = document.querySelectorAll('.active');
+
+        if (redDivs.length) {
+             for (let i = 0; i < redDivs.length; i++) {
+                redDivs[i].classList.remove('active');
+                redDivs[i].classList.add('black')
+            }
+        } else {
+             var blackDivs = document.querySelectorAll('.black');
+            for (let i = 0; i < blackDivs.length; i++) {
+                blackDivs[i].classList.remove('black')
+                blackDivs[i].classList.add('red')
+            }
+        }
+        let classList = e.target.classList;
+        let classes = e.target.className;
+        classes.includes('active') ? classList.remove('active') : classList.add('active');
+        this.answer = b;
+    }
 }

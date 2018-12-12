@@ -1,21 +1,17 @@
-<ion-header>
-    <ion-navbar color="primary">
-        <button ion-button menuToggle start>
+<ion-content>
+    <ion-navbar color="primary" transparent>
+        <button ion-button menuToggle start clear>
             <ion-icon name="menu"></ion-icon>
         </button>
 
-        <ion-title>Who Am I</ion-title> 
+        <ion-title>Who Am I?</ion-title> 
         <ion-buttons end>
-            <button ion-button (click)="go_home()">
+            <button ion-button (click)="go_home()" clear> 
                     <ion-icon name="arrow-round-back" style="color:white;text-align: right"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
-
-</ion-header>
-
-<ion-content>
-    <ion-item>
+    <ion-item style="background: transparent">
         <ion-icon name="logo-twitter" item-start></ion-icon>
         Score
         <ion-badge item-end>{{score_whoami}}</ion-badge>
@@ -32,13 +28,14 @@
             </p>
         </ion-card-content>
         <ion-row no-padding>
-            <ion-list radio-group [(ngModel)]="answer">
-                      <ion-item *ngFor="let b of answers;let i=index">
-                    <ion-label>{{b| uppercase}}</ion-label>
-                    <ion-radio  color="primary" value="{{b}}"></ion-radio>
-                </ion-item>
+            <ion-grid  style="background-color: rgba(0,255,255,0.5)">
+                <ion-row>
+                    <ion-col col-6 *ngFor="let b of answers;let i=index" class="choices-image" (click)="select_image(b,$event)">
+                             {{b| uppercase}}
+                    </ion-col>
+                </ion-row>
 
-            </ion-list>
+            </ion-grid>
 
         </ion-row>
 

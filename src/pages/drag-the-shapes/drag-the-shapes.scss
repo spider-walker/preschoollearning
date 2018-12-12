@@ -1,4 +1,14 @@
 page-drag-the-shapes {
+    ion-content{
+        background-image: url('../assets/imgs/bokeh-cover-bg1.jpg');background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+    ion-footer {
+        background-image: url('../assets/imgs/bokeh-cover-bg1.jpg');background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;   
+    }
     .chosen-image{
         font-size: 7em!important;
         margin: auto;
