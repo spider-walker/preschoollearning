@@ -1,7 +1,8 @@
 {
-  "name": "immunivac",
+  "name": "preschoollearning",
   "integrations": {
-    "cordova": {}
+    "capacitor": {}
   },
-  "type": "ionic-angular"
+  "type": "react-vite",
+  "id": "647e6950"
 }
