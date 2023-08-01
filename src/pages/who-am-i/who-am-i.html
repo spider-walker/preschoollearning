@@ -1,0 +1,60 @@
+<IonContent>
+	<IonNavbar color="primary" transparent>
+		<button ion-button menuToggle start clear>
+			<IonIcon name="menu"></IonIcon>
+		</button>
+
+		<IonTitle>Who Am I?</IonTitle>
+		<ion-buttons end>
+			<button ion-button onClick="go_home()" clear>
+				<IonIcon
+					name="arrow-round-back"
+					style="color: white; text-align: right"
+				></IonIcon>
+			</button>
+		</ion-buttons>
+	</IonNavbar>
+	<ion-item style="background: transparent">
+		<IonIcon name="logo-twitter" item-start></IonIcon>
+		Score
+		<ion-badge item-end>{{score_whoami}}</ion-badge>
+	</ion-item>
+	<hr />
+	<ion-card>
+		<img src="../assets/imgs/whoami/{{whoami}}.jpg" id="career-image" />
+		<ion-card-content>
+			<ion-card-title> Who Am I? </ion-card-title>
+			<p></p>
+		</ion-card-content>
+		<IonRow no-padding>
+			<IonGrid style="background-color: rgba(0, 255, 255, 0.5)">
+				<IonRow>
+					<IonCol
+						col-6
+						*ngFor="let b of answers;let i=index"
+						className="choices-image"
+						onClick="select_image(b,$event)"
+					>
+						{{b| uppercase}}
+					</IonCol>
+				</IonRow>
+			</IonGrid>
+		</IonRow>
+	</ion-card>
+</IonContent>
+<ion-footer>
+	<ion-toolbar>
+		<IonTitle>
+			<IonCol col-6
+				><button ion-button onClick="process_answers()">
+					Check Answer
+				</button></IonCol
+			>
+			<IonCol col-6
+				><button ion-button onClick="show_answers()">
+					Show Answer
+				</button></IonCol
+			>
+		</IonTitle>
+	</ion-toolbar>
+</ion-footer>

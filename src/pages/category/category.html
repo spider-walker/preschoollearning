@@ -1,0 +1,33 @@
+<IonContent>
+	<IonNavbar color="primary" transparent>
+		<button ion-button menuToggle start clear>
+			<IonIcon name="menu"></IonIcon>
+		</button>
+
+		<IonTitle>Category</IonTitle>
+		<ion-buttons end>
+			<button ion-button onClick="go_home()" clear>
+				<IonIcon
+					name="arrow-round-back"
+					style="color: white; text-align: right"
+				></IonIcon>
+			</button>
+		</ion-buttons>
+	</IonNavbar>
+
+	<h2 ion-text text-center className="wordart">PRESCHOOL</h2>
+	<h3 ion-text text-center className="wordart2">ACTIVITIES</h3>
+
+	<hr />
+	<button
+		*ngFor="let item of pages"
+		ion-button
+		color="secondary"
+		onClick="goToOtherPage(item)"
+		clear
+		block
+		class="button-activities"
+	>
+		{{item.title}}
+	</button>
+</IonContent>

@@ -1,0 +1,54 @@
+<IonContent>
+	<IonNavbar color="primary" transparent>
+		<button ion-button menuToggle start clear>
+			<IonIcon name="menu"></IonIcon>
+		</button>
+
+		<IonTitle>Drag The Shapes</IonTitle>
+		<ion-buttons end>
+			<button ion-button onClick="go_home()" clear>
+				<IonIcon
+					name="arrow-round-back"
+					style="color: white; text-align: right"
+				></IonIcon>
+			</button>
+		</ion-buttons>
+	</IonNavbar>
+	<ion-item style="background: transparent">
+		<IonIcon name="logo-twitter" item-start></IonIcon>
+		Score
+		<ion-badge item-end>{{score_shapes}}</ion-badge>
+	</ion-item>
+	<hr />
+	<IonGrid style="background-color: rgba(0, 255, 255, 0.5)">
+		<IonRow>
+			<IonCol col-12 className="chosen-image"
+				><fa-icon [name]="shapes"></fa-icon
+			></IonCol>
+		</IonRow>
+		<IonRow>
+			<IonCol col-12>
+				<h4 ion-text color="danger">Which shape looks like above?</h4>
+			</IonCol>
+		</IonRow>
+	</IonGrid>
+	<IonGrid style="background-color: rgba(0, 255, 255, 0.5)">
+		<IonRow>
+			<IonCol
+				col-6
+				*ngFor="let b of answers;let i=index"
+				className="choices-image"
+				onClick="select_image(b,$event)"
+			>
+				<fa-icon [name]="b"></fa-icon>
+			</IonCol>
+		</IonRow>
+	</IonGrid>
+</IonContent>
+<ion-footer>
+	<ion-toolbar>
+		<IonTitle>
+			<button ion-button block onClick="process_answers()">Check Answer</button>
+		</IonTitle>
+	</ion-toolbar>
+</ion-footer>

@@ -1,0 +1,55 @@
+<IonContent>
+	<IonNavbar color="primary" transparent>
+		<button ion-button menuToggle start clear>
+			<IonIcon name="menu"></IonIcon>
+		</button>
+
+		<IonTitle>Rumbled Alphabets</IonTitle>
+		<ion-buttons end>
+			<button ion-button onClick="go_home()" clear>
+				<IonIcon
+					name="arrow-round-back"
+					style="color: white; text-align: right"
+				></IonIcon>
+			</button>
+		</ion-buttons>
+	</IonNavbar>
+	<ion-item style="background: transparent">
+		<IonIcon name="logo-twitter" item-start></IonIcon>
+		Score
+		<ion-badge item-end>{{score_rumbled_letters}}</ion-badge>
+	</ion-item>
+	<hr />
+	<IonGrid>
+		<IonRow id="dashborad_menu">
+			<IonCol
+				*ngFor="let a of rumblesA;let i=index"
+				onClick="process_drag('A',a,i)"
+			>
+				{{a}}
+			</IonCol>
+		</IonRow>
+	</IonGrid>
+	<hr />
+	<IonGrid>
+		<IonRow id="dashborad_menu">
+			<IonCol
+				*ngFor="let b of rumblesB;let i=index"
+				onClick="process_drag('B',b,i)"
+			>
+				{{b}}
+			</IonCol>
+		</IonRow>
+	</IonGrid>
+</IonContent>
+<ion-footer>
+	<ion-toolbar>
+		<IonTitle>
+			<IonCol col-12
+				><button ion-button onClick="restart_game()" block>
+					Restart Game
+				</button></IonCol
+			>
+		</IonTitle>
+	</ion-toolbar>
+</ion-footer>

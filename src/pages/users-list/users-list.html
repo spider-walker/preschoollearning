@@ -1,0 +1,34 @@
+<ion-header>
+	<IonNavbar color="primary">
+		<button ion-button menuToggle start>
+			<IonIcon name="menu"></IonIcon>
+		</button>
+
+		<IonTitle>Members List</IonTitle>
+		<ion-buttons end>
+			<button ion-button onClick="add_member()">
+				<IonIcon name="add" style="color: white; text-align: right"></IonIcon>
+			</button>
+		</ion-buttons>
+	</IonNavbar>
+</ion-header>
+
+<IonContent padding>
+	<IonGrid>
+		<IonRow>
+			<IonCol col-5>Name</IonCol>
+			<IonCol col-6>E-Mail</IonCol>
+		</IonRow>
+		<IonRow *ngFor="let item of dbusers | async" onClick="view_parent(item)">
+			<IonCol col-5>{{item.name }}</IonCol>
+			<IonCol col-6>{{item.username}}</IonCol>
+			<IonCol col-1
+				><IonIcon
+					name="trash"
+					style="color: green; text-align: right"
+					onClick="delete_parent(item)"
+				></IonIcon
+			></IonCol>
+		</IonRow>
+	</IonGrid>
+</IonContent>

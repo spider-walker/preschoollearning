@@ -1,0 +1,135 @@
+page-rumbled-alphabets {
+	IonContent {
+		background-image: url('../assets/imgs/bokeh-cover-bg4.jpg');
+		background-size: cover; /* <------ */
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+	hr {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		height: 2em;
+	}
+	ion-card {
+		width: 100%;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	ion-card > #dashborad_menu {
+		width: 100%;
+		height: 100%;
+	}
+	#dashborad_menu IonCol {
+		display: block;
+		float: left;
+		margin: 1px;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		vertical-align: middle;
+		padding: 20px;
+		border-radius: 5px;
+	}
+
+	#dashborad_menu IonCol:nth-child(n) {
+		background-color: rgba(77, 21, 136, 0.62);
+	}
+
+	#dashborad_menu IonCol:nth-child(2n) {
+		background-color: rgba(142, 147, 17, 0.89);
+	}
+
+	#dashborad_menu IonCol:nth-child(3n) {
+		background-color: rgba(41, 162, 51, 0.8);
+	}
+
+	#dashborad_menu IonCol:nth-child(4n) {
+		background-color: rgba(42, 147, 177, 0.89) !important;
+	}
+
+	#dashborad_menu IonCol:nth-child(5n) {
+		background-color: rgba(41, 67, 136, 0.77) !important;
+	}
+
+	#dashborad_menu IonCol:nth-child(6n) {
+		background-color: rgba(153, 79, 38, 0.93) !important;
+	}
+
+	#dashborad_menu IonCol:nth-child(7n) {
+		background-color: rgba(12, 119, 210, 0.9) !important;
+	}
+
+	#dashborad_menu IonCol:nth-child(8n) {
+		background-color: rgba(12, 109, 10, 0.9) !important;
+	}
+	#dashborad_menu IonCol:nth-child(10n) {
+		background-color: rgba(12, 255, 10, 0.9) !important;
+	}
+
+	#dashborad_menu IonCol:nth-child(20n) {
+		background-color: rgba(255, 0, 5, 0.8) !important;
+	}
+
+	#dashborad_menu IonCol:hover {
+		/*background-color: #2574A9;*/
+		/*border-radius: 60px; 
+        overflow: hidden;     */
+	}
+
+	#dashborad_menu IonCol a {
+		font-size: 1.7em;
+		font-weight: bold;
+		color: #fff;
+	}
+
+	#dashborad_menu IonCol .circle-frame a :hover {
+		/*font-size: 4.2em;*/
+	}
+
+	.very-small-text {
+		font-size: 1.5em;
+		white-space: nowrap;
+		color: #fff;
+	}
+
+	.very-small-text :hover {
+	}
+	#dashborad_menu IonCol IonIcon {
+		font-size: 2em;
+		display: block;
+		text-align: center;
+	}
+
+	/* Draggable*/
+
+	.drag-border {
+		border: #ff525b dashed 2px;
+	}
+
+	.drag-handle {
+		cursor: move; /* fallback if grab cursor is unsupported */
+		cursor: grab;
+		cursor: -moz-grab;
+		cursor: -webkit-grab;
+	}
+
+	.drag-handle:active {
+		cursor: grabbing;
+		cursor: -moz-grabbing;
+		cursor: -webkit-grabbing;
+	}
+
+	/* Droppable */
+
+	.drag-hint-border {
+		border: #3c763d dashed 2px;
+	}
+
+	.drag-over-border {
+		border: #fbbc05 dashed 2px;
+	}
+
+	.drag-transit {
+		border: #3500ff dashed 2px;
+	}
+}

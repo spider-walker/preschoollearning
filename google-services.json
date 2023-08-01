@@ -1,0 +1,42 @@
+{
+	"project_info": {
+		"project_number": "354733940738",
+		"firebase_url": "https://preschoollearning-edef3.firebaseio.com",
+		"project_id": "preschoollearning-edef3",
+		"storage_bucket": "preschoollearning-edef3.appspot.com"
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:354733940738:android:ae20c3676a90050e",
+				"android_client_info": {
+					"package_name": "io.preschoollearning"
+				}
+			},
+			"oauth_client": [
+				{
+					"client_id": "354733940738-t736met2tqgeoovhsi4198i9n1amhrf2.apps.googleusercontent.com",
+					"client_type": 3
+				}
+			],
+			"api_key": [
+				{
+					"current_key": "AIzaSyDb0-Zd0IRcXKRe0mjFbe5eDZxZfkUWBDc"
+				}
+			],
+			"services": {
+				"analytics_service": {
+					"status": 1
+				},
+				"appinvite_service": {
+					"status": 1,
+					"other_platform_oauth_client": []
+				},
+				"ads_service": {
+					"status": 2
+				}
+			}
+		}
+	],
+	"configuration_version": "1"
+}

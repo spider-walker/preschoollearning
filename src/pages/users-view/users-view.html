@@ -1,0 +1,67 @@
+<ion-header>
+	<IonNavbar color="primary">
+		<button ion-button menuToggle start>
+			<IonIcon name="menu"></IonIcon>
+		</button>
+
+		<IonTitle>Member List: {{user?.name}}</IonTitle>
+		<ion-buttons end>
+			<button ion-button onClick="add_children()">
+				<IonIcon name="add" style="color: white; text-align: right"></IonIcon>
+			</button>
+		</ion-buttons>
+	</IonNavbar>
+</ion-header>
+
+<IonContent padding>
+	<IonGrid>
+		<IonRow>
+			<IonCol col-5>Name</IonCol>
+			<IonCol col-6>E-Mail</IonCol>
+		</IonRow>
+		<IonRow *ngFor="let item of children" onClick="view_parent(item)">
+			<IonCol col-5>{{item.name }}</IonCol>
+			<IonCol col-6>{{item.username}}</IonCol>
+			<IonCol col-1
+				><IonIcon
+					name="trash"
+					style="color: green; text-align: right"
+					onClick="delete_parent(item)"
+				></IonIcon
+			></IonCol>
+		</IonRow>
+	</IonGrid>
+</IonContent>
+<hr />
+
+<IonContent padding>
+	<ion-card *ngFor="let item of childrens">
+		<ion-item>
+			<h2>Name:{{item.name}}</h2>
+			<p>DOB: {{item.dob}}</p>
+			<p>Height: {{item.height}}</p>
+			<p>Weight: {{item.weight}}</p>
+			<button ion-button item-end clear small>
+				<IonIcon name="create"></IonIcon>
+			</button>
+		</ion-item>
+		<hr />
+		<ion-card-content>
+			<button ion-button item-end small onClick="scheduleImmunization(item)">
+				<IonIcon name="add" style="color: white; text-align: right"></IonIcon>
+				Schedule Immunization
+			</button>
+			<ion-list>
+				<ion-item *ngFor="let im of item.immunization">
+					<h2>Description: {{im.name}}</h2>
+					<h3>Scheduled Date: {{im.scheduled_date}}</h3>
+					<p>
+						<button ion-button item-end small clear onClick="send_reminder(im)">
+							Reminder
+						</button>
+					</p>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</IonContent>

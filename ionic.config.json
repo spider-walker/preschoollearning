@@ -1,8 +1,8 @@
 {
-  "name": "preschoollearning",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite",
-  "id": "647e6950"
+	"name": "preschoollearning",
+	"integrations": {
+		"capacitor": {}
+	},
+	"type": "react-vite",
+	"id": "647e6950"
 }
